@@ -1,0 +1,26 @@
+from sympy.abc import x,y,z,t
+from sympy import integrate, diff, exp, cos, sin, pi
+dx = diff(x,x)
+dy = diff(x**2,x)
+I1 = x*dy-y*dx
+I = integrate(I1.subs(y,x**2),(x,0,1))
+print(I)
+
+dx = diff(x,x)
+dy = diff(x**2+1,x)
+I1 = (3*x+y)*dx+(2*y-x)*dy
+I = integrate(I1.subs(y,x**2+1),(x,0,3))
+print(I)
+
+dx = diff(exp(t),t)
+dy = diff(exp(-t),t)
+dz = diff(t**2,t)
+I1 = x*y*dx+x**2*z*dy+x*y*z*dz
+I = integrate(I1.subs([(x,exp(t)),(y,exp(-t)),(z,t**2)]),(t,0,1))
+print(I)
+
+dx = diff(4*cos(t),t)
+dy = diff(3*sin(t),t)
+I1 = (x+2*y)*dx +(4-2*x)*dy
+I = integrate(I1.subs([(x,4*cos(t)),(y,3*sin(t))]),(t,0,2*pi))
+print(I)
